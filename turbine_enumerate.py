@@ -1,24 +1,25 @@
 r=10000 #Given
 
-
 from itertools import permutations
-weight=[i+1 for i in range(10)]
+from math import cos,sin,pi,sqrt
 
+weight=[i+1 for i in range(10)]
 W=sum(weight)
 clist=[]
 
 #Excluding an item and Permuting different combinations
+
 for i in permutations(weight[0:9],9):
     clist.append(list(i))
 
 #Adding the combination to the fixed element
+
 for i in clist:
     i.append(10)
 
 #Finding the CoG of each solution
-from math import cos,sin,pi
-
-
+xlist=[]
+ylist=[]
 
 def getCG(solution_vector):
     n=len(solution_vector)
@@ -30,9 +31,12 @@ def getCG(solution_vector):
         Xcg=Xcg+r*cos(2*pi*i/n)*sln
         Ycg=Ycg+r*sin(2*pi*i/n)*sln
 
-
     Xcg/=W
     Ycg/=W
+
+    # xlist.append(Xcg)
+    # ylist.append(Ycg)
+
 
     print(Xcg,Ycg)
 

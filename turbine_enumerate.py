@@ -2,6 +2,7 @@ r=10000 #Given
 
 from itertools import permutations
 from math import cos,sin,pi,sqrt
+import itertools
 
 weight=[i+1 for i in range(10)]
 W=sum(weight)
@@ -34,8 +35,8 @@ def getCG(solution_vector):
     Xcg/=W
     Ycg/=W
 
-    # xlist.append(Xcg)
-    # ylist.append(Ycg)
+    xlist.append(Xcg)
+    ylist.append(Ycg)
 
 
     print(Xcg,Ycg)
@@ -43,7 +44,11 @@ def getCG(solution_vector):
 for sln in clist:
     getCG(sln)
 
+xlist2=[i*i for i in xlist]
+ylist2=[i*i for i in ylist]
 
+for i,j in zip(xlist2,ylist2):
+    print(sqrt(i+j))
 
 
 

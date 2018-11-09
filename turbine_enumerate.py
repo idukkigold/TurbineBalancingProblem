@@ -16,18 +16,29 @@ for i in clist:
     i.append(10)
 
 #Finding the CoG of each solution
-import math
+from math import cos,sin,pi
 
 
 
-def getCG(solution_list):
-    n=len(solution_list)
+def getCG(solution_vector):
+    n=len(solution_vector)
     Xcg=0
     Ycg=0
 
-    for sln in solution_list:
+    for i,sln in enumerate(solution_vector):
+        # print(sln)
+        Xcg=Xcg+r*cos(2*pi*i/n)*sln
+        Ycg=Ycg+r*sin(2*pi*i/n)*sln
 
-        pass
+
+    Xcg/=W
+    Ycg/=W
+
+    print(Xcg,Ycg)
+
+for sln in clist:
+    getCG(sln)
+
 
 
 

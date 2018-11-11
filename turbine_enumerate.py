@@ -1,10 +1,12 @@
-r = 10000  # Given
+r = 1000  # Given
 
 from itertools import permutations
 from math import cos, sin, pi, sqrt
+import timeit
 
 N = int(input("Enter no of turbines: "))
 
+start = timeit.default_timer()
 weight = [i + 1 for i in range(N)]
 W = sum(weight)
 clist = []
@@ -52,6 +54,8 @@ ylist2 = [i * i for i in ylist]
 
 d_min = sqrt(xlist2[0] + ylist2[0])
 a = 0
+
+#Calculating minimum deviation and index
 for i, j in zip(xlist2, ylist2):
     d = sqrt(i + j)
     if d < d_min:
@@ -60,9 +64,11 @@ for i, j in zip(xlist2, ylist2):
 
     print(sqrt(i + j))
 
-print("Minimum Deviation: ",clist[a],"\n", d_min)
+print("Minimum Deviation: ", d_min," at ",clist[a],"\n")
 
+stop = timeit.default_timer()
 
+print('Time: ', stop - start)
 
 
 

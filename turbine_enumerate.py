@@ -1,8 +1,8 @@
-r = 1000  # Given
-
 from itertools import permutations
-from math import cos, sin, pi, sqrt
+from math import cos, sin, pi, sqrt,fabs
 import timeit
+
+r = 1000  # Given
 
 N = int(input("Enter no of turbines: "))
 
@@ -20,7 +20,7 @@ for i in permutations(weight[0:N - 1], N - 1):
 
 for i in clist:
     i.append(weight[-1])
-    print(i)
+    # print(i)
 
 # Finding the CoG of each solution
 xlist = []
@@ -43,7 +43,7 @@ def getCG(solution_vector):
     xlist.append(Xcg)
     ylist.append(Ycg)
 
-    print(Xcg, Ycg)
+    # print(Xcg, Ycg)
 
 
 for sln in clist:
@@ -62,7 +62,7 @@ for i, j in zip(xlist2, ylist2):
         d_min = d
         a += 1
 
-    print(sqrt(i + j))
+    # print(sqrt(i + j))
 
 print("Minimum Deviation: ", d_min," at ",clist[a],"\n")
 

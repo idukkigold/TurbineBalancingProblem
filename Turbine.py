@@ -1,35 +1,25 @@
-from __future__ import print_function
-from ortools.constraint_solver import pywrapcp
+import numpy as np
+from itertools import  permutations
 
-def main():
-  """Entry point of the program"""
-  solver = pywrapcp.Solver('ConstraintExample')
+n= int (input(" Enter turbine count: "))
 
-  # Create the variables.
-  num_vals = 3
-  x = solver.IntVar(0, num_vals - 1, 'x')
-  y = solver.IntVar(0, num_vals - 1, 'y')
-  z = solver.IntVar(0, num_vals - 1, 'z')
 
-  # Constraint 0: x != y.
-  solver.Add(x != y)
+#fix slots 0 for open 1 for placed
+Slots= [0 for i in range(n-1)]
+Slots.append(1)
+Slots.reverse()
 
-  print('Number of constraints =', solver.Constraints())
+Current_config=[]
 
-  # Call the solver.
-  decision_builder = solver.Phase([x, y, z], solver.CHOOSE_FIRST_UNBOUND, solver.ASSIGN_MIN_VALUE)
-  solver.NewSearch(decision_builder)
-  while solver.NextSolution():
-    solution = 'Solution:'
-    for var in [x, y, z]:
-      solution += ' {} = {};'.format(var.Name(), var.Value())
-    print(solution)
-  solver.EndSearch()
-  print("Number of solutions found:", solver.Solutions())
-  print('')
-  print('Advanced usage:')
-  print('Problem solved in ', solver.WallTime(), ' milliseconds')
-  print('Memory usage: ', pywrapcp.Solver.MemoryUsage(), ' bytes')
+def Cal_MinSlot(Current_config):
 
-if __name__ == "__main__":
-  main()
+    minSlot=1
+
+    return minSlot
+
+
+def PlaceTurbine():
+
+    while 0 not in Current_config:
+        minSlot=Cal_MinSlot(Current_config)
+        Current_config[minSlot]=1

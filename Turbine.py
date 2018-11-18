@@ -4,6 +4,10 @@ from itertools import  permutations
 n= int (input(" Enter turbine count: "))
 
 
+
+
+
+
 #fix slots 0 for open 1 for placed
 Slots= [0 for i in range(n-1)]
 Slots.append(1)

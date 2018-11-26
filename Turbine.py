@@ -1,5 +1,8 @@
 import numpy as np
 from itertools import  permutations
+import timeit
+from math import cos, sin, pi, sqrt,fabs
+
 
 n= int (input(" Enter turbine count: "))
 

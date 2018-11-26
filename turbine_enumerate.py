@@ -29,7 +29,8 @@ ylist = []
 
 def getCG(solution_vector):
     n = len(solution_vector)
-    Xcg = 0
+    Xcg = 0                          6
+
     Ycg = 0
 
     for i, sln in enumerate(solution_vector):

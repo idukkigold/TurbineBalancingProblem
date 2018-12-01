@@ -6,7 +6,7 @@ n = int(input(" Enter turbine count: "))
 weight = [i + 1 for i in range(n)]
 
 
-def Cal_MinSlot(Current_config,n):
+def Cal_MinSlot(Current_config,n,c):
 
     constraint = 0
     p = 0
@@ -14,8 +14,8 @@ def Cal_MinSlot(Current_config,n):
         Temp_config = Current_config[:]
 
         if slot==0:
-            Temp_config[i]=1
-            print("Temo: ",Temp_config)
+            Temp_config[i]=c
+            print("Temp: ",Temp_config)
 
             for j,tempslot in enumerate(Temp_config):
                 if j==0:
@@ -25,9 +25,10 @@ def Cal_MinSlot(Current_config,n):
 
                 else:
                     k=weight[j]*cos(2*pi*(i-j)/n)
-                    # print(i,j,constraint)
+                    print(k)
                     if k<constraint:
                         p=i
+                        constraint=k
     return p
 
 def PlaceTurbine():
@@ -35,27 +36,26 @@ def PlaceTurbine():
 
     # fix slots '0' for open, '1' for placed
     Slots = [0 for i in range(n - 1)]
-    Slots.append(n)
+    Slots.append(1)
     Slots.reverse()
     W = np.sum(sum(weight))
     Current_config = Slots
     print(Current_config)
 
-    c=1
+    i=2
     Final_config=Current_config
 
     print("Starting Configuration: ",Final_config)
     start = timeit.default_timer()
 
-    while c!=n:
+    while i!=n:
 
-        minSlot=Cal_MinSlot(Current_config,n)
+        minSlot=Cal_MinSlot(Current_config,n,i)
         print("Found minSlot at : ",minSlot)
-        Final_config[minSlot] = c
+        Final_config[minSlot] = i
         print("Final :",Final_config)
-        c+=1
+        i+=1
 
-    print(Final_config)
     stop = timeit.default_timer()
 
     print("Time for execution :",stop-start,"s")

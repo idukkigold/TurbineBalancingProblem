@@ -2,6 +2,10 @@ import numpy as np
 import timeit
 from math import cos, pi
 
+n = int(input(" Enter turbine count: "))
+weight = [i + 1 for i in range(n)]
+
+
 def Cal_MinSlot(Current_config,n):
 
     constraint = 0
@@ -15,20 +19,19 @@ def Cal_MinSlot(Current_config,n):
 
             for j,tempslot in enumerate(Temp_config):
                 if j==0:
-                    constraint= j*cos(2*pi*(i-j)/n)
+                    constraint= weight[j]*cos(2*pi*(i-j)/n)
                     p=0
                     continue
 
                 else:
-                    k=j*cos(2*pi*(i-j)/n)
+                    k=weight[j]*cos(2*pi*(i-j)/n)
                     # print(i,j,constraint)
                     if k<constraint:
                         p=i
     return p
 
 def PlaceTurbine():
-    n = int(input(" Enter turbine count: "))
-    weight = [i + 1 for i in range(n)]
+
 
     # fix slots '0' for open, '1' for placed
     Slots = [0 for i in range(n - 1)]

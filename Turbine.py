@@ -3,14 +3,15 @@ import timeit
 from math import cos, pi
 
 def Cal_MinSlot(Current_config,n):
-    Temp_config = Current_config[:]
+
     constraint = 0
     p = 0
-    for i,slot in enumerate(Temp_config):
+    for i,slot in enumerate(Current_config):
+        Temp_config = Current_config[:]
 
         if slot==0:
             Temp_config[i]=1
-
+            print("Temo: ",Temp_config)
 
             for j,tempslot in enumerate(Temp_config):
                 if j==0:
@@ -20,6 +21,7 @@ def Cal_MinSlot(Current_config,n):
 
                 else:
                     k=j*cos(2*pi*(i-j)/n)
+                    # print(i,j,constraint)
                     if k<constraint:
                         p=i
     return p
@@ -47,7 +49,7 @@ def PlaceTurbine():
         minSlot=Cal_MinSlot(Current_config,n)
         print("Found minSlot at : ",minSlot)
         Final_config[minSlot] = c
-        print(c)
+        print("Final :",Final_config)
         c+=1
 
     print(Final_config)

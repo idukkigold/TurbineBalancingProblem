@@ -1,6 +1,6 @@
 import numpy as np
 import timeit
-from math import cos, pi
+from math import cos, pi,inf
 
 n = int(input(" Enter turbine count: "))
 weight = [i + 1 for i in range(n)]
@@ -22,11 +22,12 @@ def Cal_MinSlot(Current_config,n,c):
             D.append(current_dev)
             print(Temp_config,current_dev)
 
-        else:D.append(100)
-    print(D)
+        else:D.append(inf)
+
     p=np.argmin(D)
 
     return p
+
 
 def PlaceTurbine():
     # fix slots '0' for open, '1' for placed
